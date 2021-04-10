@@ -33,14 +33,14 @@ public class PositionsOfLargeGroup {
 
     private static void largeGroupPositions(String s) {
         List<List<Integer>> largeGroupPositions = new ArrayList<List<Integer>>();
-        for (int index = 0; index < s.length(); ) {
-            int endIndexOfGroup = findGroupEnd(s, index);
+        int endIndexOfGroup;
+        for (int index = 0; index < s.length(); index = endIndexOfGroup) {
+            endIndexOfGroup = findGroupEnd(s, index);
             if ((endIndexOfGroup - index) >= 3) {
                 List<Integer> positions = new ArrayList<Integer>(
                         Arrays.asList(index, endIndexOfGroup - 1));
                 largeGroupPositions.add(positions);
             }
-            index = endIndexOfGroup;
         }
         sb.append(largeGroupPositions);
     }
