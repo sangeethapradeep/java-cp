@@ -2,6 +2,7 @@ package com.enkode.javacp.practices.lc;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -31,44 +32,24 @@ public class DegreeOfAnArray {
     }
 
     private static void findShortestSubArray(int[] nums) {
-        Map<Integer, SubArray> frequency = new HashMap<>();
-        SubArray shortestSubArray = null;
-        for (Integer num : nums) {
-            if (frequency.containsKey(num)) {
-                continue;
-            }
-            SubArray subArray = findFrequency(nums, num);
-            frequency.put(num, subArray);
-            if (shortestSubArray == null || subArray.frequency > shortestSubArray.frequency || (
-                    subArray.frequency == shortestSubArray.frequency
-                            && subArray.distance < shortestSubArray.distance)) {
-                shortestSubArray = subArray;
+        Map<Integer, Integer> count = new HashMap<>();
+        Map<Integer, Integer> left = new HashMap<>();
+        Map<Integer, Integer> right = new HashMap<>();
+
+        for (int index = 0; index < nums.length; index++) {
+            left.putIfAbsent(nums[index], index);
+            count.put(nums[index], count.getOrDefault(nums[index], 0) + 1);
+            right.put(nums[index], index);
+        }
+
+        int shortestSubArray = nums.length;
+        int degree = Collections.max(count.values());
+        for (int num : count.keySet()) {
+            if (count.get(num) == degree) {
+                shortestSubArray = Math.min(shortestSubArray, right.get(num) - left.get(num) + 1);
             }
         }
-        sb.append(shortestSubArray.distance);
-    }
 
-    private static SubArray findFrequency(int[] nums, int num) {
-        SubArray subArray = new SubArray();
-        int min = 0;
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != num) { continue; }
-            if (subArray.frequency == 0) {
-                min = i;
-            }
-            max = i;
-            subArray.frequency++;
-        }
-        subArray.distance = max - min + 1;
-        return subArray;
-    }
-
-
-    private static class SubArray {
-        int frequency = 0;
-        int distance = 0;
-
-        SubArray() {}
+        sb.append(shortestSubArray);
     }
 }
