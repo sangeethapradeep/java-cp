@@ -66,8 +66,8 @@ public class DegreeOfAnArray {
 
 
     private static class SubArray {
-        public int frequency = 0;
-        public int distance = 0;
+        int frequency = 0;
+        int distance = 0;
 
         SubArray() {}
     }
