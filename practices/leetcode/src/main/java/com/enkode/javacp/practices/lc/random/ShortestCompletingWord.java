@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc;
+package com.enkode.javacp.practices.lc.random;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
