@@ -28,16 +28,15 @@ public class FindAllDisappearedNumbers {
 
     private static List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> result = new ArrayList<>();
-        for (int i=0; i< nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             int n = Math.abs(nums[i]);
-            if(nums[n-1] > 0) {
-                nums[n-1] = -1*nums[n-1];
+            if (nums[n - 1] > 0) {
+                nums[n - 1] = -1 * nums[n - 1];
             }
         }
-
-        for(int i=0; i<nums.length; i++) {
-            if(nums[i] > 0) {
-                result.add(i+1);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                result.add(i + 1);
             }
         }
 
