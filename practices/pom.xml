@@ -14,5 +14,6 @@
   <modules>
     <module>leetcode</module>
     <module>codechef</module>
+    <module>geeksforgeeks</module>
   </modules>
 </project>
