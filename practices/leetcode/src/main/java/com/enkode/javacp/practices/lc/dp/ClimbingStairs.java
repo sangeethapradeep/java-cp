@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc.integers;
+package com.enkode.javacp.practices.lc.dp;
 
 /**
  * Problem 70
