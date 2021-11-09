@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc.string;
+package com.enkode.javacp.practices.lc.array.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
