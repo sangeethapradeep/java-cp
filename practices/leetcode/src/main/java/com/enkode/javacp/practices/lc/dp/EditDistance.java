@@ -10,9 +10,9 @@ package com.enkode.javacp.practices.lc.dp;
  */
 public class EditDistance {
   public static void main(String[] args) {
-    String word1 = "horse";
-    String word2 = "ros";
-    minDistance(word1, word2);
+    String word1 = "kindle";
+    String word2 = "needle";
+    System.out.println(minDistance(word1, word2));
   }
 
   private static int minDistance(String word1, String word2) {
