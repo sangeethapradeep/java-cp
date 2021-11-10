@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 /**
  * Problem 55.
+ *
  * <pre>
  *   Test Cases:
  *        2,3,1,1,4
@@ -26,14 +27,11 @@ public class JumpGame {
   }
 
   private static boolean canJump(int[] nums) {
-    int right = nums.length - 1;
-    int left = right - 1;
-    while (left >= 0) {
-      int leftValue = left;
-      if (nums[left--] >= (right - leftValue)) {
-        right = leftValue;
-      }
+    int n = nums.length;
+    int reachable = n - 1;
+    for (int i = n - 2; i >= 0; i--) {
+      if (nums[i] + i >= reachable) reachable = i;
     }
-    return right == 0;
+    return reachable <= 0;
   }
 }
