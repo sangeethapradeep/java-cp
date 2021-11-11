@@ -18,8 +18,10 @@ public class RemoveNthNodeFromEndOfList {
     private static final StringBuilder sb = new StringBuilder();
 
     static class ListNode {
-        private final int val;
+        private  int val;
         private ListNode next;
+
+        ListNode() {}
 
         ListNode(int val) {
             this.val = val;
@@ -57,17 +59,18 @@ public class RemoveNthNodeFromEndOfList {
     }
 
     private static ListNode removeNthNodeFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode dummy = new ListNode();
 
-        ListNode runner = dummy;
+        ListNode runner = head;
+
         ListNode walker = dummy;
+        walker.next = head;
 
-        for (int i = 0; i <= n; i++) {
+        for(int i=1; i<n; i++) {
             runner = runner.next;
         }
 
-        while (runner != null) {
+        while(runner.next != null) {
             runner = runner.next;
             walker = walker.next;
         }
