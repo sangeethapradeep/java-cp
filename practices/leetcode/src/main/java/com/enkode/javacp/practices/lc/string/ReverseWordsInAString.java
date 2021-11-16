@@ -2,8 +2,11 @@ package com.enkode.javacp.practices.lc.string;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.StringJoiner;
 
 /**
+ *
+ *
  * <pre>
  * Problem 151:
  * Given an input string s, reverse the order of the words.
@@ -24,31 +27,32 @@ import java.io.InputStreamReader;
  */
 public class ReverseWordsInAString {
 
-    private static StringBuilder sb = new StringBuilder();
+  private static StringBuilder sb = new StringBuilder();
 
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String string = br.readLine();
-        sb.append(reverseWords(string));
-        System.out.println(sb);
-    }
+  public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    String string = br.readLine();
+    sb.append(reverseWords(string));
+    System.out.println(sb);
+  }
 
-    private static String reverseWords(String s) {
-        String result = "";
-        int i = s.length() - 1;
-        int j;
-        while (i >= 0) {
-            if (s.charAt(i) == ' ') {
-                i--;
-            } else {
-                j = i;
-                while (i >= 0 && s.charAt(i) != ' ') {
-                    i--;
-                }
-                String word = s.substring(i + 1, j + 1);
-                result = result.equals("") ? result + word : result + " " + word;
-            }
-        }
-        return result;
+  private static String reverseWords(String s) {
+    StringJoiner sb = new StringJoiner(" ");
+    s = s.trim();
+
+    int lastSpace = s.length();
+
+    for (int i = s.length() - 1; i >= 0; i--) {
+      char c = s.charAt(i);
+
+      if (c == ' ') {
+        sb.add(s.substring(i + 1, lastSpace));
+        while (i >= 0 && s.charAt(i - 1) == ' ') i--;
+        lastSpace = i;
+      }
     }
+    sb.add(s.substring(0, lastSpace));
+
+    return sb.toString();
+  }
 }
