@@ -24,7 +24,7 @@ public class MinimumPathSum {
       for (int j = 0; j < n; j++) {
         if (i == 0 & j == 0) minPath[i][j] = grid[i][j];
         else if (i == 0) minPath[i][j] = minPath[i][j - 1] + grid[i][j];
-        else if (j == 0) minPath[i][j] = minPath[i - 1][0] + grid[i][j];
+        else if (j == 0) minPath[i][j] = minPath[i - 1][j] + grid[i][j];
         else minPath[i][j] = Math.min(minPath[i - 1][j], minPath[i][j - 1]) + grid[i][j];
       }
     }
