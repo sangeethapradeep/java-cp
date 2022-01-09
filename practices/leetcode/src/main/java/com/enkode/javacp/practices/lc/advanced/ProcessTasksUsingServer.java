@@ -1,6 +1,7 @@
 package com.enkode.javacp.practices.lc.advanced;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -27,7 +28,7 @@ public class ProcessTasksUsingServer {
       serverq.add(i);
     }
 
-    PriorityQueue<int[]> activetasks = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+    PriorityQueue<int[]> activetasks = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
 
     int time = 0;
     int[] result = new int[tasks.length];
