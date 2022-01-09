@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc.tree;
+package com.enkode.javacp.practices.lc.advanced;
 
 import java.util.*;
 
