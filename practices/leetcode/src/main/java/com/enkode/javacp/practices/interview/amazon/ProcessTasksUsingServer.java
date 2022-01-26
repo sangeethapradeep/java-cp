@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
+ * Amazon
  * Problem 1882
  *
  * <pre>
