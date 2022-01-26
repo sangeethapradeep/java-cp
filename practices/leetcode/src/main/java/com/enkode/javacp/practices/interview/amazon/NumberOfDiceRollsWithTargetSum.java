@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc.advanced;
+package com.enkode.javacp.practices.interview.amazon;
 
 /**
  * Problem 1155

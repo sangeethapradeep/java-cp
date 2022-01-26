@@ -1,4 +1,4 @@
-package com.enkode.javacp.practices.lc.advanced;
+package com.enkode.javacp.practices.interview.amazon;
 
 import java.util.Arrays;
 import java.util.Comparator;
