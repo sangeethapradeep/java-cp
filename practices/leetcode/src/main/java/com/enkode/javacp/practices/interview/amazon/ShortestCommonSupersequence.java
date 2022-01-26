@@ -1,6 +1,7 @@
 package com.enkode.javacp.practices.interview.amazon;
 
 /**
+ * Amazon
  * Problem 1092
  *
  * <pre>
