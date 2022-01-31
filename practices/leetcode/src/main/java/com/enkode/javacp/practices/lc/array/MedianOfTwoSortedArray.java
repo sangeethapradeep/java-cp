@@ -11,8 +11,8 @@ package com.enkode.javacp.practices.lc.array;
  */
 public class MedianOfTwoSortedArray {
   public static void main(String[] args) {
-    int[] nums1 = {1, 3};
-    int[] nums2 = {2};
+    int[] nums1 = {1, 5, 8, 10, 18, 20};
+    int[] nums2 = {2, 3, 6, 7};
     System.out.println(findMedianSortedArrays(nums1, nums2));
   }
 
@@ -30,25 +30,29 @@ public class MedianOfTwoSortedArray {
 
     int left, right, mid1, mid2;
     left = 0;
-    right = nums1.length - 1;
+    right = nums1.length;
 
     double aLeft, aRight, bLeft, bRight;
 
-    while (true) {
-      mid1 = (int)Math.floor(((float)right + left) / 2);
-      mid2 = half - mid1 - 2;
+    double median = 0f;
 
-      aLeft = mid1 < 0 ? Integer.MIN_VALUE : nums1[mid1];
-      aRight = mid1 + 1 < m ? nums1[mid1 + 1] : Integer.MAX_VALUE;
-      bLeft = mid2 < 0 ? Integer.MIN_VALUE : nums2[mid2];
-      bRight = mid2 + 1 < n ? nums2[mid2 + 1] : Integer.MAX_VALUE;
+    while (left <= right) {
+      mid1 = (right - left) / 2 + left;
+      mid2 = half - mid1;
 
-      if (aLeft <= bRight && bLeft <= aRight) {
-        if ((m + n) % 2 == 1) return Math.min(aRight, bRight);
-        return (Math.max(aLeft, bLeft) + Math.min(aRight, bRight)) / 2;
-      } else if (aLeft > bRight) {
-        right = mid1 - 1;
-      } else left = mid1 + 1;
+      aLeft = mid1 == 0 ? Integer.MIN_VALUE : nums1[mid1 - 1];
+      aRight = mid1 == m ? Integer.MAX_VALUE: nums1[mid1];
+      bLeft = mid2 == 0 ? Integer.MIN_VALUE : nums2[mid2 - 1];
+      bRight = mid2 == n ? Integer.MAX_VALUE : nums2[mid2];
+
+      if(aLeft > bRight) right = mid1 - 1;
+      else if (bLeft > aRight) left = mid1 + 1;
+      else {
+        if ((m + n) % 2 == 1) median =  Math.min(aRight, bRight);
+        else median = (Math.max(aLeft, bLeft) + Math.min(aRight, bRight)) / 2;
+        break;
+      }
     }
+    return median;
   }
 }
